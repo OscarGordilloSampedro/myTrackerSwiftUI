@@ -21,7 +21,7 @@ struct DayView: View {
                 }else {
                     ForEach ($day.exercises, id: \.id) { $exercise in
                         VStack(alignment: .leading, spacing: 5) {
-                            customHeaderButton(title: exercise.exerciseName.rawValue, buttonAction: {
+                            customHeaderButton(title: exercise.name.rawValue, buttonAction: {
                                 addNewSeries(exercise: exercise)
                             })
                             .buttonStyle(.plain)
@@ -55,25 +55,25 @@ struct DayView: View {
 
 #Preview {
     let sampleExercises = [
-        Exercise(exerciseName: Exercise.ExerciseType.backExtension, sets: [
+        Exercise(name: Exercise.ExerciseType.backExtension, sets: [
             ExerciseSet(reps: 10, weight: 15, setNumber: 1)
         ]),
-        Exercise(exerciseName: Exercise.ExerciseType.legCurl, sets: [
+        Exercise(name: Exercise.ExerciseType.legCurl, sets: [
             ExerciseSet(reps: 10, weight: 15, setNumber: 1)
         ]),
-        Exercise(exerciseName: Exercise.ExerciseType.bicepCurl, sets: [
+        Exercise(name: Exercise.ExerciseType.bicepCurl, sets: [
             ExerciseSet(reps: 10, weight: 15, setNumber: 1)
         ]),
-        Exercise(exerciseName: Exercise.ExerciseType.romanianDeadlift, sets: [
+        Exercise(name: Exercise.ExerciseType.romanianDeadlift, sets: [
             ExerciseSet(reps: 10, weight: 15, setNumber: 1)
         ]),
-        Exercise(exerciseName: Exercise.ExerciseType.benchPress, sets: [
+        Exercise(name: Exercise.ExerciseType.benchPress, sets: [
             ExerciseSet(reps: 10, weight: 15, setNumber: 1)
         ]),
-        Exercise(exerciseName: Exercise.ExerciseType.tricepsExtension, sets: [
+        Exercise(name: Exercise.ExerciseType.tricepsExtension, sets: [
             ExerciseSet(reps: 10, weight: 15, setNumber: 1)
         ]),
-        Exercise(exerciseName: Exercise.ExerciseType.legCurl, sets: [
+        Exercise(name: Exercise.ExerciseType.legCurl, sets: [
             ExerciseSet(reps: 10, weight: 15, setNumber: 1)
         ])
     ]

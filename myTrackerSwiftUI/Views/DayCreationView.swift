@@ -19,7 +19,7 @@ struct DayCreationView: View {
     
     @State private var day = Day(name: "", identifier: UUID(), exercises: [])
     @State private var exerciseTypes: [Exercise] = [
-        Exercise(exerciseName: .squat, sets: [
+        Exercise(name: .squat, sets: [
             ExerciseSet(reps: 0, weight: 0, setNumber: 1)
         ])
 ]
@@ -42,7 +42,7 @@ struct DayCreationView: View {
                 }){
                     ForEach($exerciseTypes) { $exercise in
                         HStack{
-                            Picker("Chose your exercise", selection: $exercise.exerciseName) {
+                            Picker("Chose your exercise", selection: $exercise.name) {
                                 ForEach(Exercise.ExerciseType.allCases, id: \.self) { exerciseType in
                                     Text(exerciseType.rawValue)
                                         .tag(exerciseType.rawValue)
@@ -89,7 +89,7 @@ struct DayCreationView: View {
             exerciseTypes.remove(at: index)}
     }
     func addExercise() {
-        exerciseTypes.append(Exercise(exerciseName: newExerciseType, sets: [
+        exerciseTypes.append(Exercise(name: newExerciseType, sets: [
             ExerciseSet(reps: 0, weight: 0, setNumber: 1)
         ]))
     }

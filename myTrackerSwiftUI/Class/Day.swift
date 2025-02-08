@@ -20,11 +20,11 @@ class Day: Identifiable, ObservableObject {
         self.exercises = exercises
     }
     
-    init(dayData: DayData) {
-            self.name = dayData.name
-            self.identifier = dayData.identifier
-            self.exercises = dayData.exercises.map { Exercise(exerciseData: $0) }
-        }
+    convenience init(dayData: DayData) {
+        self.init(name: dayData.name, identifier: dayData.identifier,
+                  exercises: dayData.exercises.map { Exercise(exerciseData: $0)}
+        )
+    }
 }
 
 @Model
@@ -39,9 +39,9 @@ class DayData {
         self.identifier = identifier
         self.exercises = exercises
     }
-    init(day: Day){
-        self.name = day.name
-        self.exercises = day.exercises.map {ExerciseData(exercise: $0)}
-        self.identifier = day.identifier
+    convenience init(day: Day){
+        self.init(name: day.name, identifier: day.identifier,
+                  exercises: day.exercises.map {ExerciseData(exercise: $0)}
+        )
     }
 }

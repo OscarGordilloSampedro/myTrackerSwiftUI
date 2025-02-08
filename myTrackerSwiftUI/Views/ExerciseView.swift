@@ -42,7 +42,7 @@ struct ExerciseView: View {
 }
 
 #Preview {
-    @Previewable @StateObject var exercise = Exercise(exerciseName: .backExtension, sets: [
+    @Previewable @StateObject var exercise = Exercise(name: .backExtension, sets: [
             ExerciseSet(reps: 10, weight: 15, setNumber: 1)
         ])
     ExerciseView(exercise: exercise)

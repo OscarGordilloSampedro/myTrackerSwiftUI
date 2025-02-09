@@ -8,6 +8,16 @@
 import Foundation
 import SwiftData
 
+class DayDataMapper {
+    static func map(dayData: DayData) -> (name: String, identifier: UUID, exercises: [Exercise]) {
+        let name = dayData.name
+        let identifier = dayData.identifier
+        let exercises = dayData.exercises.map { Exercise(exerciseData: $0)}
+        
+        return (name, identifier, exercises)
+    }
+}
+
 class Day: Identifiable, ObservableObject {
 
     var name : String
@@ -21,10 +31,16 @@ class Day: Identifiable, ObservableObject {
     }
     
     convenience init(dayData: DayData) {
+        let mappedData = DayDataMapper.map(dayData: dayData)
+        self.init(name: mappedData.name, identifier: mappedData.identifier, exercises: mappedData.exercises)
+    }
+    /*
+    convenience init(dayData: DayData) {
         self.init(name: dayData.name, identifier: dayData.identifier,
                   exercises: dayData.exercises.map { Exercise(exerciseData: $0)}
         )
     }
+    */
 }
 
 @Model
